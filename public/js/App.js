@@ -1,9 +1,28 @@
-const App = (props) => {
-    console.log(props.products)
+class App extends React.Component {
+    state = {
+        cart: []
+    }
+    
+    addItemToCart = (product) => {
+        this.setState(()=>{
+            this.state.cart.push(product);
+            return {cart:this.state.cart}
+        })
+    }    
+
+    render(){
+        const productDetails = this.props.products.map((p,i)=>{
+        return <ProductDetail
+        addToCart={this.addItemToCart}
+        key={i}
+        product={p}
+        />
+    });
+    
     return(
         <div>
         <div className="App">
-        <Header cart={props.cart}/>
+        <Header cart={this.state.cart}/>
         
            <div className="container">
        
@@ -21,9 +40,10 @@ const App = (props) => {
                    <div className="col-md-9">
                       <Carousel/>
                        <div className="row">
-                       {props.products.map(product => {
-                           return(<ProductDetail product={product}/>)
-                        })}
+                       {productDetails}
+                       {/* {props.products.map(product => {
+                           return(<ProductDetail product={product} handleAddToCart={props.handleAddToCart}/>)
+                        })} */}
                       
          
       
@@ -49,5 +69,6 @@ const App = (props) => {
 
     </div>
        
-    )
+        )
+    }
 }

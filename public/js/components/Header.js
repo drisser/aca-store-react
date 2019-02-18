@@ -25,7 +25,7 @@ const Header = (props) => {
                                <a href="#">Contact</a>
                            </li>
                            <li >
-                               <a href="#">Items In Cart ({props.cart})</a>
+                               <a href="#">Items In Cart ({props.cart.length})</a>
                            </li>
                        </ul>
                    </div>

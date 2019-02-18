@@ -23,6 +23,8 @@ const ProductDetail = (props) => {
             
             </p>
         </div>
+        <button onClick={()=>{
+            props.addToCart(props.product)}}>Add To Cart</button>
     </div>
 </div>
     )
